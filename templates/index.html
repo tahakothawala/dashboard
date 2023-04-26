@@ -6,10 +6,78 @@
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="barchart.js"></script>
     <script src="heatmap.js"></script>
+    <script src="piechart.js"></script>
+    <script src="pcp.js"></script>
+    <script src="index.js"></script>
+    <script src="radarchart.js"></script>
+    <script src="scatterplot.js"></script>
+    <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+    <script src="https://d3js.org/d3-zoom.v2.min.js"></script>
+    <style>
+    .Row {
+        display: table;
+        border:1.5px solid black;
+
+        width: 100%; /*Optional*/
+        table-layout: fixed; /*Optional*/
+        border-spacing: 10px; /*Optional*/
+    }
+    .Column {
+        display: table-cell;
+        padding-left: 100px;
+        border:1.5px solid grey;
+    }
+    .axis {
+        opacity: 1;
+    }
+    .axis:hover {
+        opacity: 1;
+    }
+    .container {
+  display: flex; /* or inline-flex */
+}
+
+.item {
+  height: 4rem;
+  margin: 1rem;
+}
+
+.item3 {
+  flex-grow: 2;
+}
+
+.item4 {
+  flex-grow: 1;
+}
+.parent {
+            display: flex;
+            flex-direction:row;
+          }
+          
+          .column {
+            flex: 1 1 0px;
+            border: 1px solid black;
+          }
+    </style>
 </head>
-<body onload="heatmap('Gender', 'Education', 'CigsPerDay')">
+<body style="background-color:white;" onload="index()">
     <div id="root">
-        <div id="barchart"></div>
-        <div id="heatmap"></div>
+        <div class="Row">
+            <div class="Column" id="radarchart"></div>
+            <div class="Column" id="heatmap"></div>
+            <div class="Column" id="scatterplot"></div>
+        </div>
+        <div class="">
+
+        </div>
+        <div class="Row container">
+            <div class="Column item item3" id="pcp"></div>
+            <div class="Column item item4" id="piechart"></div>
+        </div>
+          <div class="parent">
+              <div class="column">Column 1</div>
+              <div class="column">Column 2<br>Column 2<br>Column 2<br>Column 2<br></div>
+              <div class="column">Column 3</div>
+          </div>
     </div>
 </body>

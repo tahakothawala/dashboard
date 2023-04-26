@@ -20,6 +20,10 @@ d3.json("http://127.0.0.1:5000/heatmap?varX="+attr1+"&varY="+attr2+"&varZ="+attr
 var myGroups = d3.map(data.data, function(d){return d.group;}).keys()
 var myVars = d3.map(data.data, function(d){return d.variable;}).keys()
 
+myVars.sort((a, b) => a - b);
+myGroups.sort((a, b) => a - b);
+
+console.log(myVars)
 // Build X scales and axis:
 var x = d3.scaleBand()
   .range([ 0, width ])
@@ -44,7 +48,7 @@ svg.append("g")
 // Build color scale
 var myColor = d3.scaleSequential()
   .interpolator(d3.interpolateInferno)
-  .domain([1,20000])
+  .domain([1,2000])
 
 // create a tooltip
 var tooltip = d3.select("#heatmap")
@@ -99,14 +103,6 @@ svg.selectAll()
   .on("mouseleave", mouseleave)
 })
 
-// Add title to graph
-svg.append("text")
-      .attr("x", 0)
-      .attr("y", -50)
-      .attr("text-anchor", "left")
-      .style("font-size", "22px")
-      .text("A d3.js heatmap");
-
 // Add subtitle to graph
 svg.append("text")
       .attr("x", 0)
@@ -115,6 +111,6 @@ svg.append("text")
       .style("font-size", "14px")
       .style("fill", "grey")
       .style("max-width", 400)
-      .text("A short description of the take-away message of this chart.");
+      .text("Heat Map");
 
 }
